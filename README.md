@@ -194,5 +194,43 @@ showCategory('love');
   transform: scale(1.05);
 }
 </style>
+<footer class="personal-footer">
+  © 2026 | Designed with ❤️ by <span>Gourav Yadav</span>
+</footer>
+
+<style>
+.personal-footer{
+  text-align:center;
+  padding:16px;
+  margin-top:40px;
+  background:rgba(0,0,0,0.45);
+  font-size:0.95rem;
+  color:#ddd;
+  box-shadow:0 0 20px rgba(0,255,255,0.25);
+}
+.personal-footer span{
+  color:#00fff0;
+  font-weight:600;
+  text-shadow:0 0 6px #00fff0;
+}
+</style>
+<h3 class="neon-name">Gourav Yadav</h3>
+
+<style>
+.neon-name{
+  color:#00fff0;
+  font-weight:700;
+  letter-spacing:1px;
+  text-align:center;
+  text-shadow:
+    0 0 5px #00fff0,
+    0 0 10px #00fff0,
+    0 0 20px #00e6d6,
+    0 0 40px #00b3a4;
+}
+</style>
+<footer>
+  Designed with ❤️ by <span class="neon-name">Gourav Yadav</span>
+</footer>
 
 
