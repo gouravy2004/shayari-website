@@ -1,9 +1,4 @@
 <title>BEST SHAYARI❤️GY| GOURAVYADAV</title
-<!-- HERO -->
-<div class="hero">
-    <h2>दिल से निकली शायरी ❤️</h2>
-    <p>Love • Sad • Motivation • Attitude</p>
-</div>
 
 <!-- SHAYARI SECTION -->
 <div class="shayari-section">
