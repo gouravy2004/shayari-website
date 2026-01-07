@@ -140,5 +140,59 @@ showCategory('love');
 <footer>
 © 2026 | Designed with ❤️ by Gourav Yadav
 </footer>
+<section id="contact" class="contact-box">
+  <h2>📩 Contact Me</h2>
+
+  <form action="mailto:gouravy330@gmail.com" method="post" enctype="text/plain">
+    <input type="text" name="Name" gouravyadav="Your Name" required>
+
+    <textarea name="Message" rows="5" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<style>
+.contact-box{
+  max-width:500px;
+  margin:40px auto;
+  padding:25px;
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(0,0,0,0.4);
+  text-align:center;
+}
+.contact-box h2{
+  color:#00fff0;
+  margin-bottom:15px;
+  text-shadow:0 0 6px #00fff0;
+}
+.contact-box input,
+.contact-box textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:12px;
+  outline:none;
+  font-size:1rem;
+}
+.contact-box button{
+  margin-top:10px;
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  background:#00fff0;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 0 15px #00fff0;
+  transition:0.3s;
+}
+.contact-box button:hover{
+  box-shadow:0 0 30px #00fff0;
+  transform: scale(1.05);
+}
+</style>
 
 
