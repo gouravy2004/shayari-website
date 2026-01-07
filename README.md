@@ -5,7 +5,9 @@ SHAYARI FOR GOURAVYADAV
   <button onclick="showCategory('love')">❤️ Love</button>
   <button onclick="showCategory('sad')">💔 Sad</button>
   <button onclick="showCategory('attitude')">😎 Attitude</button>
-  <button onclick="showCategory('motivation')">🔥 Motivation</button>
+  <button onclick="showCategory('motivation')">🔥 Motivation</button>                                                                                                           <button onclick="showCategory(' Romantic ')">💞 Romantic</button>  
+  <button onclick="showCategory('  Deep ')"> 🖤 Deep</button> 
+
 </div>
 
 <div class="shayari-section" id="shayariBox"></div>
@@ -275,29 +277,42 @@ showCategory('love');
   filter: brightness(1.2);
 }
 </style>
-body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+<div class="shayari-card">
+  <h2>💞 प्यार</h2>
+  <p>तेरे ख्यालों में ही गुजर जाती है हर शाम,<br>दिल पूछता है खुद से, क्या यही है प्यार का नाम।</p>
+  <button class="like-btn">❤️ Like <span class="count">0</span></button>
+</div>
+
+<style>
+.like-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border:none;
+  border-radius:25px;
+  background:#00fff0;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 0 10px #00fff0;
+  transition:0.3s;
 }
-.shayari-card {
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
-  border-radius: 20px;
-  transition: 0.3s;
+.like-btn:hover{
+  transform: scale(1.1);
+  box-shadow:0 0 25px #00fff0;
 }
-.shayari-card:hover {
-  box-shadow: 0 0 40px rgba(0,255,255,0.6);
-  background: rgba(0,255,255,0.1);
+.like-btn .count {
+  margin-left:8px;
 }
-.neon-name{
-  color:#00fff0;
-  text-shadow:
-    0 0 5px #00fff0,
-    0 0 10px #00fff0,
-    0 0 20px #00e6d6,
-    0 0 40px #00b3a4;
-}
-.social-icons a{
-  background: rgba(255,255,255,0.05);
-  animation: neonColor 4s infinite alternate;
-}
+</style>
+
+<script>
+const likeButtons = document.querySelectorAll('.like-btn');
+likeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const countSpan = btn.querySelector('.count');
+    let count = parseInt(countSpan.textContent);
+    countSpan.textContent = count + 1;
+    btn.style.background = '#ff4d4d'; // change color when liked
+  });
+});
+</script>
