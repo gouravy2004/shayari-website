@@ -133,7 +133,9 @@ function copyText(btn){
 // default load
 showCategory('love');
 </script>
-
+<footer>
+© 2026 | Designed with ❤️ by Gourav Yadav
+</footer>
 
 
 
