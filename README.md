@@ -136,6 +136,25 @@ showCategory('love');
 <footer>
 © 2026 | Designed with ❤️ by Gourav Yadav
 </footer>
+<a href="mailto:gouravy330@gmail.com" class="email-btn">Send Email</a>
+
+<style>
+.email-btn{
+  display:inline-block;
+  padding:12px 26px;
+  border-radius:30px;
+  background:#00fff0;
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 15px #00fff0;
+  transition:0.3s;
+}
+.email-btn:hover{
+  box-shadow:0 0 30px #00fff0;
+  transform: scale(1.05);
+}
+</style>
 
 
 
