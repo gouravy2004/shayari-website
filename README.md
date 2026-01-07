@@ -275,5 +275,29 @@ showCategory('love');
   filter: brightness(1.2);
 }
 </style>
-
-
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+.shayari-card {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.shayari-card:hover {
+  box-shadow: 0 0 40px rgba(0,255,255,0.6);
+  background: rgba(0,255,255,0.1);
+}
+.neon-name{
+  color:#00fff0;
+  text-shadow:
+    0 0 5px #00fff0,
+    0 0 10px #00fff0,
+    0 0 20px #00e6d6,
+    0 0 40px #00b3a4;
+}
+.social-icons a{
+  background: rgba(255,255,255,0.05);
+  animation: neonColor 4s infinite alternate;
+}
