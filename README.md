@@ -132,11 +132,7 @@ function copyText(btn){
 
 // default load
 showCategory('love');
-</script><section id="contact" style="max-width:900px;margin:40px auto 0;padding:25px;text-align:center;background:rgba(255,255,255,0.08);border-radius:20px;box-shadow:0 0 25px rgba(0,0,0,0.4);">
-<h2 style="color:#00fff0;margin-bottom:10px;text-shadow:0 0 5px #00fff0;">📧 Contact Me</h2>
-<p style="margin-bottom:10px;">अगर आप मुझसे सीधे संपर्क करना चाहते हैं तो नीचे क्लिक करें</p>
-<a href="mailto:gouravy33o@gmail.com" style="display:inline-block;margin-top:10px;padding:10px 20px;border-radius:25px;background:#00fff0;color:#000;font-weight:600;text-decoration:none;box-shadow:0 0 15px #00fff0;">Send Email</a>
-</section>
+</script>
 <footer>
 © 2026 | Designed with ❤️ by Gourav Yadav
 </footer>
@@ -232,5 +228,52 @@ showCategory('love');
 <footer>
   Designed with ❤️ by <span class="neon-name">Gourav Yadav</span>
 </footer>
+<div class="social-icons">
+  <a href="https://instagram.com/yourusername" target="_blank" title="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
+
+  <a href="mailto:yourgmail@gmail.com" title="Gmail">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+  </a>
+</div>
+
+<style>
+@keyframes neonColor {
+  0% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
+  25% { box-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0; }
+  50% { box-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00; }
+  75% { box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d; }
+  100% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
+}
+
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:12px;
+}
+
+.social-icons a{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.05);
+  animation: neonColor 4s infinite alternate;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover{
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.social-icons img{
+  width:24px;
+  filter: brightness(1.2);
+}
+</style>
 
 
