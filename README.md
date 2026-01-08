@@ -155,27 +155,7 @@ likeButtons.forEach(btn => {
 </script>
 </body>
 </html>                                                                               
-<body>/* Mobile Responsive */
-@media screen and (max-width:768px){
-  .container{grid-template-columns:1fr; gap:15px;}
-  .shayari{font-size:16px; padding:10px; margin:10px 0;}
-}
-@media screen and (max-width:480px){
-  .container{padding:10px;}
-  .profile-container img{width:100px;height:100px;}
-  .profile-container h2{font-size:16px;}
-  input, textarea{width:90%; font-size:14px;}
-  .copy-btn, .like-btn, #themeToggle{font-size:12px; padding:6px 10px;}
-}
-</style>
-</head>
-<body>
-
-<!-- PROFILE -->
-<div class="profile-container">
-  <img src="your-photo.jpg" alt="Gourav Yadav">
-  <h2>Gourav Yadav</h2>
-</div>
+<body>/
 
 
 <h1>✨ Gourav Shayari World ✨</h1>
