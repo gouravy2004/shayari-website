@@ -201,40 +201,72 @@ function filterShayari(category, btn){
 
 </body>
 </html>
-<img width="12" height="3" alt="image" src="https://github.com/user-attachments/assets/3dfaaf02-044d-4a21-bede-5828d351f3bc" />
-<button id="themeToggle" onclick="toggleTheme()">🌙</button>
 
-<footer class="profile-footer">
-    <div class="profile-box">
-        <img src="profile.jpg" alt="Profile" class="profile-pic">
-
-        <h2 class="neon-name">Gourav Yadav</h2>
-
-        <p class="profile-tag">
-            Long Shayari | Love • Sad • Attitude • Life
-        </p>
 
         <div class="social-icons">
             <a href="https://instagram.com/" target="_blank">📷</a>
             <a href="mailto:yourgmail@gmail.com">✉️</a>
         </div>
     </div>
+<div class="ai-box">
+  <h2>🧠 AI Shayari Generator</h2>
+
+  <select id="category">
+    <option value="love">❤️ Love</option>
+    <option value="sad">💔 Sad</option>
+    <option value="attitude">😎 Attitude</option>
+    <option value="motivational">🔥 Motivational</option>
+  </select>
+
+  <button onclick="generateShayari()">Generate Shayari</button>
+
+  <div id="result"></div>
+
+  <button class="copy" onclick="copyShayari()">📋 Copy</button>
+</div>
+<button onclick="speakShayari()">🔊 Play Voice</button>
+<button onclick="stopVoice()">⛔ Stop</button>
+
+<select id="voiceType">
+  <option value="female">👩 Female Voice</option>
+  <option value="male">👨 Male Voice</option>
+</select>
+<button onclick="playShayari()">🔊 Play Voice + Music</button>
+<button onclick="stopAll()">⛔ Stop</button>
+
+<label>🎵 Music Volume</label>
+<input type="range" id="musicVol" min="0" max="1" step="0.1" value="0.3">
+
+<label>🔊 Voice Volume</label>
+<input type="range" id="voiceVol" min="0" max="1" step="0.1" value="1">
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<script>
+function generateShayari(){
+  const cat = document.getElementById("category").value;
+  let lines = shayariDB[cat];
+  let shayari = "";
+
+  for(let i=0;i<3;i++){
+    shayari += lines[Math.floor(Math.random()*lines.length)] + "\n";
+  }
+
+  document.getElementById("result").innerText = shayari;
+
+  // 🤖 AUTO READ ON GENERATE
+  playShayari();
+}
+</script>
+<button id="pauseBtn" onclick="toggleVoice()">⏸ Pause</button>
 
     <p class="copyright">
         © 2026 | Designed with ❤️ by Gourav Yadav
     </p>
 </footer>
-<div class="load-more-box">
-    <button id="loadMoreBtn" onclick="loadMore()">
-        🔄 Load More Shayari
-    </button>
-</div>
-<section class="trending-section">
-  <h2>🔥 Trending Shayari</h2>
-  <div id="trendingContainer" class="container"></div>
-</section>
 
-
+ 
 
 
 
