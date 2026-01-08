@@ -136,19 +136,6 @@ h1{
   <button id="themeToggle" onclick="toggleTheme()">🌙 Dark / Light Toggle</button>
 </div>
 
-<div class="container">
-  <div class="column">
-    <h2>Love Shayari</h2>
-    <div class="shayari">तुम मेरी धड़कनों में हमेशा बसे रहो...</div>
-    <button class="copy-btn">Copy Shayari</button>
-  </div>
-  <div class="column">
-    <h2>Life Shayari</h2>
-    <div class="shayari">ज़िंदगी खूबसूरत है, बस जीना सीखो...</div>
-    <button class="copy-btn">Copy Shayari</button>
-  </div>
-</div>
-
 <script>
 function toggleTheme(){
   document.body.classList.toggle('light-theme');
@@ -171,34 +158,6 @@ likeButtons.forEach(btn => {
 
                                                                                    
 </script>
-
-
-</script><script>
-function toggleTheme() {
-  const body = document.body;
-  const columns = document.getElementsByClassName("column");
-  const shayaris = document.getElementsByClassName("shayari");
-
-  if(body.classList.contains("light")) {
-    // Switch to Dark
-    body.classList.remove("light");
-    body.style.background = "var(--bg-gradient-dark)";
-    body.style.color = "var(--text-color-dark)";
-    for(let c of columns){ c.style.background="var(--column-bg-dark)"; }
-    for(let s of shayaris){ s.style.background="var(--shayari-bg-dark)"; }
-  } else {
-    // Switch to Light
-    body.classList.add("light");
-    body.style.background = "var(--bg-gradient-light)";
-    body.style.color = "var(--text-color-light)";
-    for(let c of columns){ c.style.background="var(--column-bg-light)"; }
-    for(let s of shayaris){ s.style.background="var(--shayari-bg-light)"; }
-  }
-}
-</script>
-}
-</script>
-
 </head>
 
 <body>
