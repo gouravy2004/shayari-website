@@ -201,6 +201,7 @@ function filterShayari(category, btn){
 
 </body>
 </html>
+<button id="themeToggle">🌙 Dark Mode</button>
 
 
       
