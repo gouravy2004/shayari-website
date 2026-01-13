@@ -25,13 +25,19 @@ body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);}
 .actions{display:flex;gap:12px;margin-top:14px;}
 .actions button{padding:7px 15px;border:none;border-radius:20px;background:var(--btn);color:#fff;font-weight:bold;cursor:pointer;}
 .footer{text-align:center;padding:15px;color:#ff4d6d}
-#adminPanel{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:999;align-items:center;justify-content:center;}
-#adminPanel > div{background:#fff;color:#111;width:90%;max-width:400px;padding:20px;border-radius:20px;}
-#adminPanel h3{text-align:center;color:#ff4d6d;margin-bottom:10px;}
-#adminPanel input,#adminPanel textarea,#adminPanel select{width:100%;margin:8px 0;padding:10px;border-radius:10px;border:1px solid #ccc;}
-#adminPanel button{width:100%;padding:10px;border:none;border-radius:20px;margin-top:5px;cursor:pointer;}
-#adminPanel button.addBtn{background:#ff4d6d;color:#fff;}
+
+/* Admin Panel Custom */
+#adminPanel{display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+#adminPanel > div{background:linear-gradient(135deg,#ff4d6d,#ff85b3);color:#fff;width:90%;max-width:400px;padding:25px;border-radius:25px;box-shadow:0 0 20px rgba(0,0,0,0.5);transform:scale(0);opacity:0;transition:0.3s;}
+#adminPanel.show > div{transform:scale(1);opacity:1;}
+#adminPanel h3{text-align:center;color:#fff;margin-bottom:15px;font-size:22px;}
+#adminPanel input,#adminPanel textarea,#adminPanel select{width:100%;margin:10px 0;padding:12px;border-radius:12px;border:none;}
+#adminPanel textarea{resize:none;}
+#adminPanel button{width:100%;padding:12px;border:none;border-radius:25px;margin-top:8px;cursor:pointer;font-weight:bold;}
+#adminPanel button.addBtn{background:#fff;color:#ff4d6d;}
 #adminPanel button.closeBtn{background:#333;color:#fff;}
+#loginBox input{background:rgba(255,255,255,0.3);color:#fff;}
+#loginBox button{background:#fff;color:#ff4d6d;}
 </style>
 </head>
 <body class="dark">
@@ -61,14 +67,15 @@ body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);}
   </div>
 </div>
 
-<div class="footer">© 2026 designed Gourav Yadav</div>
+<div class="footer">© 2026 Gourav Yadav</div>
 
-<!-- ADMIN PANEL -->
+<!-- Admin Panel -->
 <div id="adminPanel">
 <div>
-<h3>Admin Panel</h3>
+<h3>Admin Panel Login</h3>
 <div id="loginBox">
-<input id="adminPass" type="password" placeholder="Enter Password">
+<input id="adminUser" type="text" placeholder="Username">
+<input id="adminPass" type="password" placeholder="Password">
 <button onclick="adminLogin()">Login</button>
 </div>
 <div id="storyBoxAdmin" style="display:none">
@@ -89,30 +96,7 @@ body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);}
 </div>
 
 <script>
-let stories={
-love:[
-["उसकी मुस्कान ने दिल को छू लिया","बिना कहे बहुत कुछ कह दिया","हर सुबह उसकी याद आई","हर रात उसका ख्वाब आया","धीरे-धीरे समझ आया","प्यार आवाज़ नहीं","एक एहसास होता है","जो ज़िंदगी बदल देता है","हमेशा उसके ख्यालों में खो जाता हूँ","उसकी हँसी मेरे दिन को रोशन कर देती है","उसके बिना सब अधूरा लगता है","प्यार हर पल बढ़ता जाता है"]
-],
-sad:[
-["भीड़ में भी अकेलापन लगा","हँसी के पीछे दर्द छुपा","रातें सवाल करती रहीं","नींद जवाब नहीं दे पाई","कुछ यादें चुभती रहीं","और हम चुपचाप सहते रहे","दिल टूटने का एहसास","कभी शब्दों में नहीं आता","आँखों से कह दिया","पर कोई नहीं समझा","यादें कभी नहीं मिटती","दर्द हमेशा साथ रहता है"]
-],
-horror:[
-["कमरा अंधेरे में डूबा था","घड़ी बारह बजा चुकी थी","किसी ने मेरा नाम लिया","पीछे मुड़ा तो कोई नहीं","आईने में देखा","वहाँ कोई मुस्कुरा रहा था","दिल तेज़ी से धड़क रहा था","हवा चल रही थी","दरवाज़ा खुद बंद हुआ","कोई साया गुजरता दिखा","भूत की आवाज़ गूंज रही थी","और मैं कांपता रहा"]
-],
-motivation:[
-["थक जाना हार नहीं","रुक जाना हार है","हर मुश्किल सबक है","हर दर्द ताकत बनता है","खुद पर भरोसा रखो","तुम बहुत आगे जाओगे","कभी पीछे मत देखो","सपनों को पकड़ो","मेहनत रंग लाएगी","हर असफलता एक सीख है","दृढ़ता सफलता लाएगी","अपने लक्ष्य पर कायम रहो"]
-],
-friendship:[
-["दोस्ती नाम नहीं एक एहसास है","जो हर मुश्किल में साथ खड़ा हो","सच्चा दोस्त वही है","जो बिना कहे समझ जाए","साथ हँसना और साथ रोना","यादें हमेशा साथ रहती हैं","वक्त बदलता है पर दोस्ती नहीं","एक सच्चा दोस्त अनमोल है","जीवन में खुशियाँ बाँटता है","साथ होने से ताकत बढ़ती है","वफ़ादारी की मिसाल","दोस्ती अमर होती है"]
-],
-attitude:[
-["हम चुप रहते हैं","क्योंकि शब्द कम हैं","जो समझे वही अपना है","दूसरों की नज़रों से मत डर","खुद की राह खुद बनाओ","शक्ति भीतर है","दिखावा छोड़ो","सफलता अपने आप आएगी","धैर्य रखो","हमेशा आगे बढ़ो","सकारात्मक सोच रखो","दुनिया पीछे रह जाएगी"]
-],
-life:[
-["ज़िंदगी सीखों का सफ़र है","हर दिन कुछ सिखा जाता है","गलतियाँ अनुभव देती हैं","सफलता मेहनत मांगती है","खुश रहना एक कला है","सपने हमेशा देखो","उम्मीद मत खोना","दूसरों की तुलना मत करना","सकारात्मक सोच रखो","हर पल जियो","परिवार और दोस्त ज़रूरी हैं","हर दिन नई कहानी है"]
-]
-};
-
+let stories = {love:[],sad:[],horror:[],motivation:[],friendship:[],attitude:[],life:[]};
 let saved = localStorage.getItem("storiesData");
 if(saved){Object.assign(stories, JSON.parse(saved));}
 
@@ -126,34 +110,60 @@ let synth=window.speechSynthesis,voiceOn=false,utter;
 function loadStory(){
  storyText.innerHTML="";
  bar.style.animation="none";bar.offsetHeight;bar.style.animation="load 10s linear forwards";
- stories[current][i].forEach((l,idx)=>{
-  let d=document.createElement("div");d.className="story-line";
-  d.style.animationDelay=`${idx*0.5}s`;d.innerText=l;
-  storyText.appendChild(d);
- });
+ if(stories[current][i]){
+   stories[current][i].forEach((l,idx)=>{
+     let d=document.createElement("div");
+     d.className="story-line";
+     d.style.animationDelay=`${idx*0.5}s`;
+     d.innerText=l;
+     storyText.appendChild(d);
+   });
+ }
  dots.innerHTML="";
- stories[current].forEach((_,x)=>{let dot=document.createElement("div");dot.className="dot"+(x===i?" active":"");dots.appendChild(dot);});
+ stories[current].forEach((_,x)=>{
+   let dot=document.createElement("div");
+   dot.className="dot"+(x===i?" active":"");
+   dots.appendChild(dot);
+ });
  speakStory();
 }
 function changeCategory(cat,btn){current=cat;i=0;document.querySelectorAll(".categories button").forEach(x=>x.classList.remove("active"));btn.classList.add("active");loadStory();}
 function likeStory(){alert("❤️ Story Liked")}
-function copyStory(){navigator.clipboard.writeText(stories[current][i].join("\n"));alert("📋 Story Copied");}
+function copyStory(){if(stories[current][i]){navigator.clipboard.writeText(stories[current][i].join("\n"));alert("📋 Story Copied");}}
 function toggleVoice(){voiceOn=!voiceOn;voiceBtn.innerText=voiceOn?"⏸ Pause Voice":"▶️ Play Voice";if(!voiceOn)synth.cancel();else speakStory();}
-function speakStory(){if(!voiceOn)return;if(synth.speaking)synth.cancel();utter=new SpeechSynthesisUtterance(stories[current][i].join(" । "));utter.lang="hi-IN";utter.rate=0.9;synth.speak(utter);}
-let sx=0;const storyBox=document.getElementById("storyBox");
+function speakStory(){if(!voiceOn)return;if(synth.speaking)synth.cancel();if(stories[current][i]){utter=new SpeechSynthesisUtterance(stories[current][i].join(" । "));utter.lang="hi-IN";utter.rate=0.9;synth.speak(utter);}}
+let sx=0;
+const storyBox=document.getElementById("storyBox");
 storyBox.addEventListener("touchstart",e=>sx=e.touches[0].clientX);
 storyBox.addEventListener("touchend",e=>{let d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>30){i=d>0?(i+1)%stories[current].length:(i-1+stories[current].length)%stories[current].length;loadStory();}});
 storyBox.addEventListener("mousedown",e=>sx=e.clientX);
 storyBox.addEventListener("mouseup",e=>{let d=sx-e.clientX;if(Math.abs(d)>30){i=d>0?(i+1)%stories[current].length:(i-1+stories[current].length)%stories[current].length;loadStory();}});
 function toggleTheme(){document.body.classList.toggle("dark")}
-
-// ADMIN PANEL
-function openAdmin(){document.getElementById("adminPanel").style.display="flex";}
-function closeAdmin(){document.getElementById("adminPanel").style.display="none";}
-function adminLogin(){let pass=document.getElementById("adminPass").value;if(pass==="admin123"){document.getElementById("loginBox").style.display="none";document.getElementById("storyBoxAdmin").style.display="block";}else{alert("storygy or gourav123");}}
-function saveStory(){let cat=document.getElementById("adminCategory").value;let text=document.getElementById("adminStory").value.trim();if(!text)return alert("Story लिखो");let lines=text.split("\n").filter(l=>l.trim()!=="");if(!stories[cat])stories[cat]=[];stories[cat].push(lines);localStorage.setItem("storiesData",JSON.stringify(stories));alert("✅ Story Added Successfully");document.getElementById("adminStory").value="";loadStory();}
-
 loadStory();
+
+// Admin
+function openAdmin(){document.getElementById("adminPanel").style.display="flex";document.getElementById("adminPanel").classList.add("show");}
+function closeAdmin(){document.getElementById("adminPanel").style.display="none";document.getElementById("adminPanel").classList.remove("show");}
+function adminLogin(){
+  let user=document.getElementById("adminUser").value.trim();
+  let pass=document.getElementById("adminPass").value.trim();
+  if(user==="Gourav" && pass==="admin123"){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("storyBoxAdmin").style.display="block";
+  } else { alert(" storyworld02 or gourav123"); }
+}
+function saveStory(){
+  let cat=document.getElementById("adminCategory").value;
+  let text=document.getElementById("adminStory").value.trim();
+  if(!text) return alert("Story लिखो");
+  let lines=text.split("\n").filter(l=>l.trim()!=="");
+  if(!stories[cat]) stories[cat]=[];
+  stories[cat].push(lines);
+  localStorage.setItem("storiesData",JSON.stringify(stories));
+  alert("✅ Story Added Successfully");
+  document.getElementById("adminStory").value="";
+  loadStory();
+}
 </script>
 </body>
 </html>
