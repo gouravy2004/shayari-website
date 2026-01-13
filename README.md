@@ -74,7 +74,7 @@ body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);}
 <div>
 <h3>Admin Panel Login</h3>
 <div id="loginBox">
-<input id="adminUser" type="text" placeholder="storldworld02"">
+<input id="adminUser" type="text" placeholder="storldworld02">
 <input id="adminPass" type="password" placeholder="gourav123">
 <button onclick="adminLogin()">Login</button>
 </div>
